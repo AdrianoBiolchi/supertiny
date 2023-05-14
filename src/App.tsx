@@ -1,12 +1,16 @@
-import { ThemeProvider } from "styled-components";
-import { defaultTheme } from "./styles/themes/default";
-import { GlobalStyle } from "./styles/global";
+import { ThemeProvider } from 'styled-components'
+import { defaultTheme } from './styles/themes/default'
+import { GlobalStyle } from './styles/global'
+import { Orders } from './pages/Orders'
+import { OrdersProvider } from './contexts/OrdersContext'
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
-      <h1>SuperTiny</h1>
+      <OrdersProvider>
+        <Orders />
+      </OrdersProvider>
     </ThemeProvider>
   )
 }
