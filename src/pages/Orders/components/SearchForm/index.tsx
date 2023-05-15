@@ -1,7 +1,10 @@
 import { MagnifyingGlass } from 'phosphor-react'
 import { SearchFormContainer } from './styles'
+import { useContext } from 'react'
+import { OrdersContext } from '../../../../contexts/OrdersContext'
 
-export function SearchForm() {
+export function SearchForm(query?: string) {
+  const { fetchOrders } = useContext(OrdersContext)
   return (
     <SearchFormContainer>
       <input type="text" placeholder="Busque pelo nome do cliente" />

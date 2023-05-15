@@ -14,7 +14,7 @@ export function Summary() {
           <span>Pedidos</span>
           <ArrowCircleUp size={32} color="#00b37e" />
         </header>
-        <strong>400</strong>
+        <strong>181</strong>
       </SummaryCard>
 
       <SummaryCard>

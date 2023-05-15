@@ -14,6 +14,7 @@ interface Order {
 
 interface OrderContextType {
   orders: Order[]
+  fetchOrders: () => Promise<void>
 }
 
 interface OrdersProviderProps {
@@ -25,34 +26,24 @@ export const OrdersContext = createContext({} as OrderContextType)
 export function OrdersProvider({ children }: OrdersProviderProps) {
   const [orders, setOrders] = useState<Order[]>([])
 
-  async function loadOrders() {
-    const response = await api.get(
-      '/pedidos.pesquisa.php?token=5faf325d1590a4d607fd7f803f9460e8bce9635a&formato=JSON',
-      // // {
-      // //   headers: {
-      // //     'Access-Control-Allow-Origin': '*',
-      // //     'Access-Control-Allow-Headers': 'Authorization',
-      // //     'Access-Control-Allow-Methods':
-      // //       'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-      // //     'Content-Type': 'application/json;charset=UTF-8',
-      // //   },
-      //   // params: {
-      //   //   q: query,
-      //   // },
-      // },
-    )
-
-    //setOrders(response.data)
+  async function fetchOrders() {
+    const response = await api.get('/pedidos')
+    setOrders(response.data.retorno.pedidos)
   }
   console.log('/api')
   useEffect(() => {
-    loadOrders()
+    fetchOrders()
   }, [])
 
   console.log(orders)
 
   return (
-    <OrdersContext.Provider value={{ orders }}>
+    <OrdersContext.Provider
+      value={{
+        orders,
+        fetchOrders,
+      }}
+    >
       {children}
     </OrdersContext.Provider>
   )
