@@ -3,7 +3,7 @@ import { SearchFormContainer } from './styles'
 import { useContext } from 'react'
 import { OrdersContext } from '../../../../contexts/OrdersContext'
 
-export function SearchForm(query?: string) {
+export function SearchForm() {
   const { fetchOrders } = useContext(OrdersContext)
   return (
     <SearchFormContainer>
