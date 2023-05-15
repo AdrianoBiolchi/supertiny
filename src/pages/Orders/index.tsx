@@ -19,11 +19,11 @@ export function Orders() {
           <tbody>
             {orders.map((order) => {
               return (
-                <tr>
+                <tr key={order.pedido.id} id="">
                   <td width="50%">{order.pedido.nome}</td>
                   <td>
                     <PriceHighlight variant="income">
-                      {priceFormatter.format(parseInt(order.pedido.valor))}
+                      {priceFormatter.format(order.pedido.valor)}
                     </PriceHighlight>
                   </td>
                   <td>{order.pedido.data_pedido}</td>

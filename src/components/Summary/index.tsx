@@ -4,6 +4,7 @@ import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
 import { SummaryCard, SummaryContainer } from './styles'
 
 import { OrdersContext } from '../../contexts/OrdersContext'
+import { priceFormatter } from '../../utils/formatter'
 
 export function Summary() {
   const { orders } = useContext(OrdersContext)
@@ -30,7 +31,7 @@ export function Summary() {
           <span>Totais</span>
           <CurrencyDollar size={32} color="#fff" />
         </header>
-        <strong>R$ 300.000,00</strong>
+        <strong>{priceFormatter.format(parseInt('450000'))}</strong>
       </SummaryCard>
     </SummaryContainer>
   )

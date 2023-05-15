@@ -3,13 +3,15 @@ import { ReactNode, createContext, useEffect, useState } from 'react'
 import { api } from '../lib/axios'
 
 interface Order {
-  id: number
-  numero: number
-  data_pedido: string
-  nome: string
-  valor: string
-  nome_vendedor: string
-  situacao: string
+  pedido: {
+    id: string
+    numero: string
+    data_pedido: string
+    nome: string
+    valor: number
+    nome_vendedor: string
+    situacao: string
+  }
 }
 
 interface OrderContextType {
