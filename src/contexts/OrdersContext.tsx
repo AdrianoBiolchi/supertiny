@@ -29,16 +29,12 @@ export function OrdersProvider({ children }: OrdersProviderProps) {
   const [orders, setOrders] = useState<Order[]>([])
 
   async function fetchOrders() {
-    const response = await api.get('/pedidos')
+    const response = await api.get('/vendas')
     setOrders(response.data.retorno.pedidos)
   }
-  console.log('/api')
   useEffect(() => {
     fetchOrders()
   }, [])
-
-  console.log(orders)
-
   return (
     <OrdersContext.Provider
       value={{

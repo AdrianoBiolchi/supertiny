@@ -1,5 +1,10 @@
-import { HeaderContainer, HeaderContent, LogoMenu, NewOrderButton } from './styles';
-import logoImg from '../../assets/logo-supertiny.svg';
+import {
+  HeaderContainer,
+  HeaderContent,
+  LogoMenu,
+  NewOrderButton,
+} from './styles'
+import logoImg from '../../assets/logo-supertiny.svg'
 
 export function Header() {
   return (
@@ -9,5 +14,5 @@ export function Header() {
         <NewOrderButton>Novo Menu</NewOrderButton>
       </HeaderContent>
     </HeaderContainer>
-  );
+  )
 }

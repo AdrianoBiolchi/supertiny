@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -17,8 +17,16 @@ export const GlobalStyle = createGlobalStyle`
         color: ${(props) => props.theme['gray-100']};
         -webkit-font-smoothing: antialiased;
     }
+    a:visited {
+    color: inherit;
+    }
+    a:link {
+   color: inherit;
+}
 
     body, input, textarea, button {
     font: 400 1rem Roboto, sans-serif;
+    text-decoration-line: none;
+   
   }
-`;
+`
