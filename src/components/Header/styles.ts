@@ -28,6 +28,7 @@ export const NewOrderButton = styled.button`
   font-weight: bold;
   padding: 0 1.25rem;
   border-radius: 6px;
+  margin-left: 1rem;
   cursor: pointer;
 
   &:hover {
