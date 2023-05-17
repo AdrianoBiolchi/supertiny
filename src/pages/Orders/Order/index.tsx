@@ -9,13 +9,18 @@ import { OrderContainer, OrderList, PrintButton } from './styles'
 
 const Label: React.FC<{ item: any }> = ({ item }) => (
   <div
-    style={{
-      width: '33mm',
-      height: '15mm',
-      border: '1px solid black',
-      margin: '0.5mm',
-      padding: '2mm',
-    }}
+    style={{ 
+          width: '30mm', 
+          height: '15mm', 
+          border: '1px solid black', 
+          margin: '1mm', 
+          padding: '1mm', 
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
   >
     <p style={{ fontSize: '9px', color: '#000' }}>
       Cód: <b>{item.item.codigo}</b>
@@ -47,7 +52,7 @@ const LabelPrinting: React.FC = () => {
         <div style={{ display: 'none' }}>
           <div
             ref={printRef}
-            style={{ width: '102mm', display: 'flex', flexWrap: 'wrap' }}
+            style={{  width: '100mm', display: 'flex', flexWrap: 'wrap',  }}
           >
             {items.map((item) => (
               <Label key={item.id} item={item} />
@@ -61,7 +66,7 @@ const LabelPrinting: React.FC = () => {
               <th>Descrição</th>
               <th>Quantidade</th>
               <th>
-                <ReactToPrint
+                <ReactToPrint 
                   trigger={() =>
                     isLoading === true ? (
                       <PrintButton>Gerando...</PrintButton>
