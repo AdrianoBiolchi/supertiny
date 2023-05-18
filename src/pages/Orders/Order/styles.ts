@@ -67,3 +67,41 @@ export const OrderList = styled.div`
     }
   }
 `
+
+export const TablePrint = styled.div`
+font-family: Arial, Helvetica, sans-serif;
+    width: 3cm;
+    height: 1.5cm;
+    margin-left: 0.2cm;
+    color: #000;
+
+    @media print {
+			body {
+				padding: 0;
+			}
+
+			.box-etiqueta {
+				border: none !important;
+				box-shadow: none !important;
+				background-color: unset;
+        color: #000;
+			}
+
+			.info-pagina {
+				display: none;
+			}
+		}
+`;
+
+export const LabelPrint = styled.div`
+color: #000;
+    white-space: normal;
+    line-height: 1.2em;
+    box-shadow: 0 0 0 1px #000;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    display: inline-block;
+    word-break: break-word;
+`;
