@@ -68,40 +68,33 @@ export const OrderList = styled.div`
   }
 `
 
-export const TablePrint = styled.div`
-font-family: Arial, Helvetica, sans-serif;
-    width: 3cm;
-    height: 1.5cm;
-    margin-left: 0.2cm;
-    color: #000;
-
-    @media print {
-			body {
-				padding: 0;
-			}
-
-			.box-etiqueta {
-				border: none !important;
-				box-shadow: none !important;
-				background-color: unset;
-        color: #000;
-			}
-
-			.info-pagina {
-				display: none;
-			}
-		}
-`;
-
 export const LabelPrint = styled.div`
-color: #000;
-    white-space: normal;
-    line-height: 1.2em;
-    box-shadow: 0 0 0 1px #000;
-    border-radius: 3px;
-    position: relative;
+  color: #000;
+  width: 38.1mm;
+  height: 21.2mm;
+  display: inline-block;
+  //border: 1px solid #333;
+  padding: 3mm;
+  box-sizing: border-box;
+  page-break-inside: avoid;
+  margin-right: 2.55mm;
+  border-radius: 10px;
+  p {
+    padding: 1px;
     overflow: hidden;
-    background-color: #fff;
-    display: inline-block;
-    word-break: break-word;
-`;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* start showing ellipsis when 3rd line is reached */
+    white-space: pre-wrap; /* let the text wrap preserving spaces */
+  }
+  &:nth-child(5n) {
+    margin-right: 0; /* remove margin from every 5th item */
+  }
+`
+
+export const TablePrint = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 210mm; // Largura disponível para as etiquetas
+  padding: 1.19cm 4mm; // Margens superior/inferior e lateral
+`
