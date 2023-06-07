@@ -38,6 +38,7 @@ const LabelPrinting: React.FC = () => {
   const { id } = useParams<{ id: string }>()
   const items = useFetchItems(id)
   const componentRef = useRef<HTMLDivElement>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const renderItems = useCallback(() => {
     return items.map((item) => (
@@ -56,11 +57,48 @@ const LabelPrinting: React.FC = () => {
   return (
     <OrderContainer>
       <OrderList>
+      <div style={{ display: 'none' }}>
         <TablePrint ref={componentRef}>{renderItems()}</TablePrint>
-        <ReactToPrint
-          trigger={() => <PrintButton>Imprimir etiquetas</PrintButton>}
-          content={() => componentRef.current}
-        />
+        </div>
+        
+
+         <table>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Descrição</th>
+              <th>Quantidade</th>
+              <th>
+                <ReactToPrint
+                  trigger={() =>
+                    isLoading === true ? (
+                      <ReactToPrint
+                      trigger={() => <PrintButton>Gerando...</PrintButton>}                     
+                    />
+                    ) : (
+                      <ReactToPrint
+                      trigger={() => <PrintButton>Imprimir etiquetas</PrintButton>}
+                      content={() => componentRef.current}
+                    />
+                    )
+                  }
+                  content={() => componentRef.current}
+                />
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((i) => (
+              <tr key={i.item.id}>
+                <td>{i.item.codigo}</td>
+                <td>{i.item.descricao}</td>
+                <td align="center">{i.item.quantidade}</td>
+                <td></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
       </OrderList>
     </OrderContainer>
   )
